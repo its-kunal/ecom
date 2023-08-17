@@ -10,7 +10,11 @@ export interface Auth {
 
 export const authSchema = new Schema<Auth>({
   name: String,
-  username: String,
+  username: {
+    type: String,
+    index: true,
+    unique: true,
+  },
   password: String,
 });
 
