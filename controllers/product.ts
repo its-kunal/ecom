@@ -2,7 +2,7 @@ import productModel, { Product } from "../models/product";
 
 export async function addProduct({ product }: { product: Product }) {
   try {
-    productModel.create(product);
+    await productModel.create(product);
   } catch (err) {
     throw new Error("Error creating product");
   }
@@ -10,7 +10,7 @@ export async function addProduct({ product }: { product: Product }) {
 
 export async function deleteProduct({ productId }: { productId: string }) {
   try {
-    productModel.findByIdAndDelete(productId);
+    await productModel.findByIdAndDelete(productId);
   } catch (err) {
     throw new Error("Error deleting product");
   }
@@ -24,7 +24,7 @@ export async function updateProduct({
   product: Product;
 }) {
   try {
-    productModel.findByIdAndUpdate(productId, product);
+    await productModel.findByIdAndUpdate(productId, product);
   } catch (err) {
     throw new Error("Error updating product");
   }
@@ -32,7 +32,7 @@ export async function updateProduct({
 
 export async function getProduct({ productId }: { productId: string }) {
   try {
-    return productModel.findById(productId);
+    return await productModel.findById(productId);
   } catch (err) {
     throw new Error("Error getting product");
   }
@@ -66,7 +66,7 @@ export async function getProducts({
   if (availability != undefined) queryObj = { ...queryObj, availability };
 
   try {
-    return productModel.find(queryObj);
+    return await productModel.find(queryObj);
   } catch (err) {
     throw new Error("Error getting products");
   }

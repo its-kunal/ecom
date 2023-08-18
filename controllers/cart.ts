@@ -8,7 +8,7 @@ export async function addProduct({
   userId: string;
 }) {
   try {
-    cartModel.findOneAndUpdate(
+    await cartModel.findOneAndUpdate(
       { userId },
       {
         $push: { items: item },
@@ -29,7 +29,7 @@ export async function updateProductQuantity({
   changeBy: number;
 }) {
   try {
-    cartModel.findOneAndUpdate(
+    await cartModel.findOneAndUpdate(
       { userId, "items.productId": productId },
       {
         $inc: { "items.$.quantity": changeBy },
@@ -48,7 +48,7 @@ export async function removeProduct({
   userId: string;
 }) {
   try {
-    cartModel.updateOne({ userId }, { $pull: { items: { productId } } });
+    await cartModel.updateOne({ userId }, { $pull: { items: { productId } } });
   } catch (err) {
     throw new Error("Error removing product from cart");
   }
@@ -56,7 +56,7 @@ export async function removeProduct({
 
 export async function clearCart({ userId }: { userId: string }) {
   try {
-    cartModel.updateOne({ userId }, { $set: { items: [] } });
+    await cartModel.updateOne({ userId }, { $set: { items: [] } });
   } catch (err) {
     throw new Error("Error clearing cart");
   }

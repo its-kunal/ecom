@@ -34,7 +34,7 @@ export async function generateToken({ user }: { user: Auth }) {
 
 export async function createUser({ user }: { user: Auth }) {
   try {
-    authModel.create(user);
+    await authModel.create(user);
   } catch (err) {
     throw new Error("Error creating user");
   }
@@ -42,7 +42,7 @@ export async function createUser({ user }: { user: Auth }) {
 
 export async function deleteUser({ userId }: { userId: string }) {
   try {
-    authModel.findByIdAndDelete(userId);
+    await authModel.findByIdAndDelete(userId);
   } catch (err) {
     throw new Error("Error deleting user");
   }

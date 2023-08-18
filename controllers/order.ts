@@ -14,7 +14,7 @@ export async function createOrder({
     totalPrice += item.product.price * item.quanity;
   });
   try {
-    orderModel.create({ items, userId, totalPrice });
+    await orderModel.create({ items, userId, totalPrice });
   } catch (err) {
     throw new Error("Error creating order");
   }
@@ -22,7 +22,7 @@ export async function createOrder({
 
 export async function getOrders({ buyerId }: { buyerId: string }) {
   try {
-    return orderModel.find({ buyerId });
+    return await orderModel.find({ buyerId });
   } catch (err) {
     throw new Error("Error getting orders");
   }
@@ -30,7 +30,7 @@ export async function getOrders({ buyerId }: { buyerId: string }) {
 
 export async function getOrder({ orderId }: { orderId: string }) {
   try {
-    return orderModel.findById(orderId);
+    return await orderModel.findById(orderId);
   } catch (err) {
     throw new Error("Error getting order");
   }

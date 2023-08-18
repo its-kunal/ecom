@@ -8,7 +8,7 @@ export async function createCategory({
   description: string;
 }) {
   try {
-    categoryModel.create({ name, description });
+    await categoryModel.create({ name, description });
   } catch (err) {
     throw new Error("Error creating category");
   }
