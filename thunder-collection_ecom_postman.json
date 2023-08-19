@@ -1,0 +1,375 @@
+{
+  "info": {
+    "_postman_id": "2711fa3d-90a6-4a41-84ab-f13f30f62235",
+    "name": "ecom",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": ""
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "/auth/signin",
+              "path": ["signin"],
+              "host": ["auth"]
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"username\": \"abc1243\",\n  \"name\": \"abc\",\n  \"password\": \"123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "/auth/login",
+              "path": ["login"],
+              "host": ["auth"]
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"username\": \"abc123\",\n  \"password\": \"123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/auth/logout",
+              "path": ["logout"],
+              "host": ["auth"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyMyIsInBhc3N3b3JkIjoiMTIzIiwibmFtZSI6IiIsImlhdCI6MTY5MjQxNTA2OCwiZXhwIjoxNjkyNDE4NjY4fQ.JaToUkO5EYrtk0JG8hjNfB0ZmmglMhOf6p9EsUe3KIc"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"username\": \"abc123\",\n  \"password\": \"123\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "category",
+      "item": [
+        {
+          "name": "Category List",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/category",
+              "host": ["category"]
+            }
+          }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "/category",
+              "host": ["category"]
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"name\":\"slip-ons\",\n  \"description\":\"Live like king, with comfort\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Particular Category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/category/64e0359359c4f91d4311e980",
+              "path": ["64e0359359c4f91d4311e980"],
+              "host": ["category"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "item": [
+        {
+          "name": "Create product",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "/product",
+              "host": ["product"]
+            },
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"title\":\"xyz - pqr\",\n  \"price\" : 175,\n  \"description\":\"lorem 123\",\n  \"categoryId\":\"64e0363c59c4f91d4311e98e\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/product?query=x",
+              "query": [
+                {
+                  "key": "query",
+                  "value": "x"
+                },
+                {
+                  "key": "availability",
+                  "value": "false",
+                  "disabled": true
+                },
+                {
+                  "key": "minPrice",
+                  "value": "150",
+                  "disabled": true
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "200",
+                  "disabled": true
+                },
+                {
+                  "key": "categoryId",
+                  "value": "64e0359359c4f91d4311e980",
+                  "disabled": true
+                }
+              ],
+              "variable": [],
+              "host": ["product"]
+            }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "/product/64e0405ef936d0114680fe76",
+              "path": ["64e0405ef936d0114680fe76"],
+              "host": ["product"]
+            }
+          }
+        },
+        {
+          "name": "Get Product",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/product/64e0411bf936d0114680fe99",
+              "path": ["64e0411bf936d0114680fe99"],
+              "host": ["product"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "order",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "/order",
+              "host": ["order"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyMyIsInBhc3N3b3JkIjoiMTIzIiwibmFtZSI6IiIsImlhdCI6MTY5MjQyMzczMCwiZXhwIjoxNjkyNDI3MzMwfQ.e33-bxRIG4TnmPRIM1nkL2510kbk4DDqT7lSa1H69L4 "
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"itemRef\":[\n    {\n      \"product\": \"64e0411bf936d0114680fe99\",\n      \"quanity\":\"4\"\n    },\n    {\n      \"product\": \"64e0411bf936d0114680fe99\",\n      \"quanity\":\"5\"\n    }\n  ]\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Order",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/order/64e05a89216f3914c19bd30d",
+              "path": ["64e05a89216f3914c19bd30d"],
+              "host": ["order"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyMyIsInBhc3N3b3JkIjoiMTIzIiwibmFtZSI6IiIsImlhdCI6MTY5MjQyMzczMCwiZXhwIjoxNjkyNDI3MzMwfQ.e33-bxRIG4TnmPRIM1nkL2510kbk4DDqT7lSa1H69L4 "
+              }
+            ]
+          }
+        },
+        {
+          "name": "Get Orders",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/order",
+              "host": ["order"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyMyIsInBhc3N3b3JkIjoiMTIzIiwibmFtZSI6IiIsImlhdCI6MTY5MjQyMzczMCwiZXhwIjoxNjkyNDI3MzMwfQ.e33-bxRIG4TnmPRIM1nkL2510kbk4DDqT7lSa1H69L4 "
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "cart",
+      "item": [
+        {
+          "name": "Get Cart",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "/cart",
+              "host": ["cart"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyNDMiLCJwYXNzd29yZCI6IjEyMyIsIm5hbWUiOiIiLCJpYXQiOjE2OTI0MjYwODksImV4cCI6MTY5MjQyOTY4OX0.f3Aptu5bplIjYY2jMNW34OkqVXZZtg-0xNFXkQGwagA "
+              }
+            ]
+          }
+        },
+        {
+          "name": " Clear Cart",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "/cart",
+              "host": ["cart"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyNDMiLCJwYXNzd29yZCI6IjEyMyIsIm5hbWUiOiIiLCJpYXQiOjE2OTI0MjYwODksImV4cCI6MTY5MjQyOTY4OX0.f3Aptu5bplIjYY2jMNW34OkqVXZZtg-0xNFXkQGwagA "
+              }
+            ]
+          }
+        },
+        {
+          "name": "Update Product Quantity",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "/cart/64e0411bf936d0114680fe99?quantity=4",
+              "query": [
+                {
+                  "key": "quantity",
+                  "value": "4"
+                }
+              ],
+              "variable": [],
+              "path": ["64e0411bf936d0114680fe99"],
+              "host": ["cart"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyNDMiLCJwYXNzd29yZCI6IjEyMyIsIm5hbWUiOiIiLCJpYXQiOjE2OTI0MjYwODksImV4cCI6MTY5MjQyOTY4OX0.f3Aptu5bplIjYY2jMNW34OkqVXZZtg-0xNFXkQGwagA "
+              }
+            ]
+          }
+        },
+        {
+          "name": "Remove Product from cart",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "/cart/64e0411bf936d0114680fe99",
+              "path": ["64e0411bf936d0114680fe99"],
+              "host": ["cart"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyNDMiLCJwYXNzd29yZCI6IjEyMyIsIm5hbWUiOiIiLCJpYXQiOjE2OTI0MjYwODksImV4cCI6MTY5MjQyOTY4OX0.f3Aptu5bplIjYY2jMNW34OkqVXZZtg-0xNFXkQGwagA "
+              }
+            ]
+          }
+        },
+        {
+          "name": "Add Product In Cart",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "/cart",
+              "host": ["cart"]
+            },
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYzEyNDMiLCJwYXNzd29yZCI6IjEyMyIsIm5hbWUiOiIiLCJpYXQiOjE2OTI0MjYwODksImV4cCI6MTY5MjQyOTY4OX0.f3Aptu5bplIjYY2jMNW34OkqVXZZtg-0xNFXkQGwagA "
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              },
+              "raw": "{\n  \"productId\": \"64e0411bf936d0114680fe99\",\n  \"quantity\" : 1\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

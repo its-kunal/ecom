@@ -1,0 +1,5 @@
+# Change environment variables and file name to .env also delete this line 👈
+PORT=5000
+SECRET=507b53d0613a5e27f13ff25035e4e4a73dbba66276689627db3cbb99140084cd15d055d8c39cd41ab
+e4f5310a2d361bbcc5aff3af84a4f45071d220e7b413fa0
+MONGODB_URI=mongodb://127.0.0.1:27017/test
