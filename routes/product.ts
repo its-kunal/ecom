@@ -6,6 +6,7 @@ import {
   getProduct,
   getProducts,
 } from "../controllers/product";
+import { authMiddleware } from "../middleware/auth";
 
 const router = Router();
 
@@ -22,7 +23,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", authMiddleware,  async (req, res) => {
   const { id } = req.params;
   try {
     await deleteProduct({ productId: id });
