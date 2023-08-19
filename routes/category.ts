@@ -10,8 +10,10 @@ const router = Router();
 router.post("/", async (req, res) => {
   const { name, description } = req.body;
   try {
-    await createCategory({ name, description });
-    return res.status(200).json({ message: "Category created successfully" });
+    const id = await createCategory({ name, description });
+    return res
+      .status(200)
+      .json({ message: "Category created successfully", id });
   } catch (err: any) {
     return res.status(401).json({ message: err.message });
   }

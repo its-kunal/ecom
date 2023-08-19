@@ -18,7 +18,7 @@ router.post("/", async (req, res) => {
     await createOrder({
       items: itemRef,
       // @ts-ignore
-      userId: req.user._id,
+      userId: req.user.username,
       // @ts-ignore
       buyerName: req.user.name,
     });
@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
   let orders = [];
   try {
     // @ts-ignore
-    orders = await getOrders({ buyerId: req.user._id });
+    orders = await getOrders({ buyerId: req.user.username });
   } catch (err: any) {
     return res.status(401).json({ message: err.message });
   }
