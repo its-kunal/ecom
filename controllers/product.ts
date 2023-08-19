@@ -52,14 +52,16 @@ export async function getProducts({
   availability?: boolean;
 }) {
   let priceRange = {};
-  if (minPrice != undefined) priceRange = { ...priceRange, $gte: minPrice };
-  if (maxPrice != undefined) priceRange = { ...priceRange, $lte: maxPrice };
+  if (minPrice != undefined)
+    priceRange = { ...priceRange, $gte: Number(minPrice) };
+  if (maxPrice != undefined)
+    priceRange = { ...priceRange, $lte: Number(maxPrice) };
 
   let queryObj = {};
   queryObj = {
     ...queryObj,
     title: { $regex: query, $options: "i" },
-    price: priceRange,
+    price: { $gte: 0, ...priceRange },
   };
 
   if (categoryId != undefined) queryObj = { ...queryObj, categoryId };

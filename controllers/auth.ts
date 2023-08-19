@@ -11,17 +11,18 @@ export async function verifyToken({
 }: {
   token: string;
 }): Promise<boolean | JwtPayload> {
+  let decoded: boolean | JwtPayload;
   try {
-    verify(token, secret, (err, decoded) => {
-      if (err) {
-        return false;
+    decoded = verify(token, secret, (err, decoded) => {
+      if (decoded) {
+        return decoded;
       }
-      return decoded;
+      return false;
     });
   } catch (err) {
     throw new Error("Invalid token");
   }
-  return false;
+  return decoded;
 }
 
 export async function generateToken({ user }: { user: Auth }) {

@@ -8,7 +8,8 @@ export async function createCategory({
   description: string;
 }) {
   try {
-    await categoryModel.create({ name, description });
+    const doc = await categoryModel.create({ name, description });
+    return doc._id;
   } catch (err) {
     throw new Error("Error creating category");
   }
@@ -16,7 +17,9 @@ export async function createCategory({
 
 export async function getCategories() {
   try {
-    return (await categoryModel.find({}, { name: 1 })).map((v) => v.name);
+    return (await categoryModel.find({})).map((v) => {
+      return { name: v.name, id: v._id };
+    });
   } catch (err) {
     throw new Error("Error getting categories");
   }

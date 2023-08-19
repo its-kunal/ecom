@@ -14,8 +14,8 @@ interface Item {
 }
 
 async function getItem({ itemRef }: { itemRef: ItemRef }): Promise<Item> {
-  const product: any = await productModel.find({ productId: itemRef.product });
-  return { product, quanity: itemRef.quanity };
+  const product: any = await productModel.findById(itemRef.product);
+  return { product, quanity: Number(itemRef.quanity) };
 }
 
 export async function createOrder({
@@ -29,13 +29,18 @@ export async function createOrder({
 }) {
   let confirmItems: Item[] = [];
 
-  items.forEach(async (item) =>
-    confirmItems.push(await getItem({ itemRef: item }))
-  );
+  await (async () => {
+    for (let item of items) {
+      let l = await getItem({
+        itemRef: { ...item, quanity: Number(item.quanity) },
+      });
+      confirmItems.push(l);
+    }
+  })();
 
   let totalPrice = 0;
   confirmItems.forEach((item) => {
-    totalPrice += item.product.price * item.quanity;
+    totalPrice += item.product.price * Number(item.quanity);
   });
   try {
     await orderModel.create({

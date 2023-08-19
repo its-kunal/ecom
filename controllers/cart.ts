@@ -12,7 +12,7 @@ export async function addProduct({
       { userId },
       {
         $push: { items: item },
-      }
+      },
     );
   } catch (err) {
     throw new Error("Error adding product to cart");
@@ -33,7 +33,7 @@ export async function updateProductQuantity({
       { userId, "items.productId": productId },
       {
         $inc: { "items.$.quantity": changeBy },
-      }
+      },
     );
   } catch (err) {
     throw new Error("Error updating product quantity");
