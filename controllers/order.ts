@@ -21,11 +21,11 @@ async function getItem({ itemRef }: { itemRef: ItemRef }): Promise<Item> {
 export async function createOrder({
   items,
   userId,
-  buyerName
+  buyerName,
 }: {
   items: ItemRef[];
   userId: string;
-  buyerName :string
+  buyerName: string;
 }) {
   let confirmItems: Item[] = [];
 
@@ -38,7 +38,12 @@ export async function createOrder({
     totalPrice += item.product.price * item.quanity;
   });
   try {
-    await orderModel.create({ items: confirmItems, buyerId:userId, totalPrice, buyerName });
+    await orderModel.create({
+      items: confirmItems,
+      buyerId: userId,
+      totalPrice,
+      buyerName,
+    });
   } catch (err) {
     throw new Error("Error creating order");
   }
