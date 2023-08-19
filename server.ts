@@ -5,12 +5,16 @@ import cartRouter from "./routes/cart";
 import productRouter from "./routes/product";
 import orderRouter from "./routes/order";
 import categoryRouter from "./routes/category";
+import mongoose from "mongoose";
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
+const mongodbURI = process.env.MONGODB_URI || "";
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+mongoose.connect(mongodbURI);
 
 app.use("/auth", authRouter);
 app.use("/category", categoryRouter);

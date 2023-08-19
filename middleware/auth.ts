@@ -4,7 +4,7 @@ import { verifyToken } from "../controllers/auth";
 export async function authMiddleware(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   // TODO: retrieve and verify given jwt token, if true set it decoded token to req.user. else, return error
   const token = req.headers.authorization?.split(" ")[1] || "";
