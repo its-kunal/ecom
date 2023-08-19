@@ -14,6 +14,7 @@ export const cartSchema = new Schema<Cart>({
   userId: {
     type: String,
     index: true,
+    required: true,
   },
   items: [
     {

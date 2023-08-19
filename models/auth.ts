@@ -14,14 +14,18 @@ export const authSchema = new Schema<Auth>({
     type: String,
     index: true,
     unique: true,
+    required: true,
   },
-  password: String,
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 authSchema.pre("save", function (next) {
   this.password = hashSync(this.password, 8);
   // create empty cart when new user registers
-  cartModel.create({ userId: this._id });
+  cartModel.create({ userId: this.username });
   next();
 });
 

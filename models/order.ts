@@ -12,6 +12,7 @@ export interface Order {
 export const orderSchema = new Schema<Order>({
   buyerName: String,
   buyerId: {
+    required: true,
     type: String,
     index: true,
   },

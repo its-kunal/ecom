@@ -9,10 +9,14 @@ export interface Product {
 }
 
 export const productSchema = new Schema<Product>({
-  title: String,
+  title: {
+    type: String,
+    required: true,
+  },
   price: {
     type: Number,
     min: 0,
+    required: true,
   },
   description: String,
   availability: {

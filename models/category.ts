@@ -6,7 +6,11 @@ export interface Category {
 }
 
 export const categorySchema = new Schema<Category>({
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+    required: true,
+  },
   description: String,
 });
 
