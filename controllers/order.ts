@@ -3,7 +3,7 @@ import orderModel from "../models/order";
 import productModel from "../models/product";
 import { Product } from "../models/product";
 
-interface ItemRef {
+export interface ItemRef {
   product: string;
   quanity: number;
 }

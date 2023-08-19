@@ -12,7 +12,7 @@ export async function addProduct({
       { userId },
       {
         $push: { items: item },
-      },
+      }
     );
   } catch (err) {
     throw new Error("Error adding product to cart");
@@ -33,7 +33,7 @@ export async function updateProductQuantity({
       { userId, "items.productId": productId },
       {
         $inc: { "items.$.quantity": changeBy },
-      },
+      }
     );
   } catch (err) {
     throw new Error("Error updating product quantity");
@@ -59,5 +59,14 @@ export async function clearCart({ userId }: { userId: string }) {
     await cartModel.updateOne({ userId }, { $set: { items: [] } });
   } catch (err) {
     throw new Error("Error clearing cart");
+  }
+}
+
+export async function getCart({ userId }: { userId: string }) {
+  try {
+    const cart = await cartModel.find({ userId });
+    return cart;
+  } catch (err) {
+    throw new Error("Error getting cart");
   }
 }
