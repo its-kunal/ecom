@@ -61,7 +61,7 @@ export async function getProducts({
   queryObj = {
     ...queryObj,
     title: { $regex: query, $options: "i" },
-    price: { $gte: 0, ...priceRange },
+    price: { $elemMatch: { $gte: 0, ...priceRange } },
   };
 
   if (categoryId != undefined) queryObj = { ...queryObj, categoryId };
