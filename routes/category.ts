@@ -3,7 +3,7 @@ import {
   createCategory,
   getCategories,
   getCategory,
-} from "../controllers/category";
+} from "@/controllers/category";
 
 const router = Router();
 

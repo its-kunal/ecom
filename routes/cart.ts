@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { authMiddleware } from "../middleware/auth";
+import { authMiddleware } from "@/middleware/auth";
 import {
   clearCart,
   getCart,
   removeProduct,
   updateProductQuantity,
   addProduct,
-} from "../controllers/cart";
+} from "@/controllers/cart";
 const router = Router();
 
 router.use(authMiddleware);

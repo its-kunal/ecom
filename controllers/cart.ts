@@ -1,4 +1,4 @@
-import cartModel from "../models/cart";
+import cartModel from "@/models/cart";
 
 export async function addProduct({
   item,

@@ -1,4 +1,4 @@
-import productModel, { Product } from "../models/product";
+import productModel, { Product } from "@/models/product";
 
 export async function addProduct({ product }: { product: Product }) {
   try {
