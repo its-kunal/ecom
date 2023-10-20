@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 import { hashSync } from "bcrypt";
-import cartModel from "./cart";
+import cartModel from "@/models/cart";
 
 export interface Auth {
   name: string;

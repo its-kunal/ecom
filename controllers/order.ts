@@ -1,7 +1,7 @@
-import order from "../models/order";
-import orderModel from "../models/order";
-import productModel from "../models/product";
-import { Product } from "../models/product";
+import order from "@/models/order";
+import orderModel from "@/models/order";
+import productModel from "@/models/product";
+import { Product } from "@/models/product";
 
 export interface ItemRef {
   product: string;

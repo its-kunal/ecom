@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { Product } from "../models/product";
+import { Product } from "@/models/product";
 import {
   addProduct,
   deleteProduct,
   getProduct,
   getProducts,
-} from "../controllers/product";
-import { authMiddleware } from "../middleware/auth";
+} from "@/controllers/product";
+import { authMiddleware } from "@/middleware/auth";
 
 const router = Router();
 
@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", authMiddleware,  async (req, res) => {
+router.delete("/:id", authMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
     await deleteProduct({ productId: id });

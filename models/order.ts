@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Product, productSchema } from "./product";
+import { Product, productSchema } from "@/models/product";
 
 export interface Order {
   buyerName: string;

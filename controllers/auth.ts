@@ -1,7 +1,7 @@
 import { verify, sign, JwtPayload } from "jsonwebtoken";
 import dotenv from "dotenv";
 import { compareSync } from "bcrypt";
-import authModel, { Auth } from "../models/auth";
+import authModel, { Auth } from "@/models/auth";
 
 dotenv.config();
 const secret = process.env.SECRET || "";
@@ -13,6 +13,7 @@ export async function verifyToken({
 }): Promise<boolean | JwtPayload> {
   let decoded: boolean | JwtPayload;
   try {
+    // @ts-ignore
     decoded = verify(token, secret, (err, decoded) => {
       if (decoded) {
         return decoded;

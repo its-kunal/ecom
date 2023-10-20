@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { verifyToken } from "../controllers/auth";
+import { verifyToken } from "@/controllers/auth";
 
 export async function authMiddleware(
   req: Request,

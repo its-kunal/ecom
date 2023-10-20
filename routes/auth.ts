@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { createUser, generateToken, verifyUser } from "../controllers/auth";
-import { Auth } from "../models/auth";
+import { createUser, generateToken, verifyUser } from "@/controllers/auth";
+import { Auth } from "@/models/auth";
 
 const router = Router();
 
